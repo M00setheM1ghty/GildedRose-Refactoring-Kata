@@ -22,7 +22,7 @@ namespace GildedRoseTests
             Assert.That(items[0].SellIn, Is.EqualTo(9));
             Assert.That(items[0].Quality, Is.EqualTo(21));
         }
-
+        [Test]
         public void TestAfterSellDate()
         {
             // Arrange
@@ -34,7 +34,7 @@ namespace GildedRoseTests
             Assert.That(items[0].SellIn, Is.EqualTo(-2));
             Assert.That(items[0].Quality, Is.EqualTo(22));
         }
-
+        [Test]
         public void TestNearMaxQuality()
         {
             // Arrange
@@ -46,7 +46,7 @@ namespace GildedRoseTests
             Assert.That(items[0].SellIn, Is.EqualTo(9));
             Assert.That(items[0].Quality, Is.EqualTo(50)); // Should not exceed 50
         }
-
+        [Test]
         public void TestNearMaxQuality2()
         {
             // Arrange
@@ -59,6 +59,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(50)); // Should not exceed 50
         }
 
+        [Test]
         public void TestMaxQualityPositiveSellin()
         {
             // Arrange
@@ -71,6 +72,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(50)); // Should remain at 50
         }
 
+        [Test]
         public void TestMaxQualityNegativeSellin()
         {
             // Arrange
@@ -79,7 +81,7 @@ namespace GildedRoseTests
             // Act
             app.UpdateQuality();
             // Assert
-            Assert.That(items[0].SellIn, Is.EqualTo(9));
+            Assert.That(items[0].SellIn, Is.EqualTo(-4));
             Assert.That(items[0].Quality, Is.EqualTo(50)); // Should remain at 50
         }
     }

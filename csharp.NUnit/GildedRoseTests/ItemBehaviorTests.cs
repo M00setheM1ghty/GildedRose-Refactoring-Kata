@@ -23,6 +23,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(19));
         }
 
+        [Test]
         public void TestOnSellDate()
         {
             // Arrange
@@ -35,6 +36,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(18));
         }
 
+        [Test]
         public void TestAfterSellDate()
         {
             // Arrange
@@ -47,6 +49,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(18));
         }
 
+        [Test]
         public void TestQualityZero() {
             var items = new List<Item> {new Item { Name = "Another Item", SellIn = -1, Quality = 0 } };
             var app = new GildedRose(items);
@@ -54,7 +57,7 @@ namespace GildedRoseTests
             app.UpdateQuality();
             // Assert
             Assert.That(items[0].SellIn, Is.EqualTo(-2));
-            Assert.That(items[1].Quality, Is.EqualTo(0));
+            Assert.That(items[0].Quality, Is.EqualTo(0));
         }
     }
 }

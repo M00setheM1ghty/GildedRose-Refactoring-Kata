@@ -19,10 +19,11 @@ namespace GildedRoseTests
             // Act
             app.UpdateQuality();
             // Assert
-            Assert.That(items[0].SellIn, Is.EqualTo(1));
+            Assert.That(items[0].SellIn, Is.EqualTo(10));
             Assert.That(items[0].Quality, Is.EqualTo(80));
         }
 
+        [Test]
         public void TestSulfurasNoChangeNegativeSellin()
         {
             // Arrange
@@ -35,6 +36,7 @@ namespace GildedRoseTests
             Assert.That(items[0].Quality, Is.EqualTo(80));
         }
 
+        [Test]
         public void TestSulfurasNoChangeSellinZero()
         {
             // Arrange
