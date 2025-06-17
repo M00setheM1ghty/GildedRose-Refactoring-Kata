@@ -113,5 +113,18 @@ namespace GildedRoseTests
             Assert.That(items[0].SellIn, Is.EqualTo(-6));
             Assert.That(items[0].Quality, Is.EqualTo(0)); // Quality drops to 0 after the concert
         }
+
+        [Test]
+        public void TestBackstagePassNotNegativeQuality()
+        {
+            // Arrange
+            var items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -5, Quality = 0 } };
+            var app = new GildedRose(items);
+            // Act
+            app.UpdateQuality();
+            // Assert
+            Assert.That(items[0].SellIn, Is.EqualTo(-6));
+            Assert.That(items[0].Quality, Is.EqualTo(0)); // Quality should stay 0
+        }
     }
 }

@@ -59,5 +59,17 @@ namespace GildedRoseTests
             Assert.That(items[0].SellIn, Is.EqualTo(-2));
             Assert.That(items[0].Quality, Is.EqualTo(0));
         }
+
+        [Test]
+        public void TestQualityNegativeSellinUnevenQuality()
+        {
+            var items = new List<Item> { new Item { Name = "Another Item", SellIn = -1, Quality = 1 } };
+            var app = new GildedRose(items);
+            // Act
+            app.UpdateQuality();
+            // Assert
+            Assert.That(items[0].SellIn, Is.EqualTo(-2));
+            Assert.That(items[0].Quality, Is.EqualTo(0));
+        }
     }
 }
