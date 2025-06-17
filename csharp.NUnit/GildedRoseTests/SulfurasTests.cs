@@ -19,7 +19,7 @@ namespace GildedRoseTests
             // Act
             app.UpdateQuality();
             // Assert
-            Assert.That(items[0].SellIn, Is.EqualTo(9));
+            Assert.That(items[0].SellIn, Is.EqualTo(1));
             Assert.That(items[0].Quality, Is.EqualTo(80));
         }
 
@@ -31,7 +31,7 @@ namespace GildedRoseTests
             // Act
             app.UpdateQuality();
             // Assert
-            Assert.That(items[0].SellIn, Is.EqualTo(9));
+            Assert.That(items[0].SellIn, Is.EqualTo(-5));
             Assert.That(items[0].Quality, Is.EqualTo(80));
         }
 
@@ -43,7 +43,7 @@ namespace GildedRoseTests
             // Act
             app.UpdateQuality();
             // Assert
-            Assert.That(items[0].SellIn, Is.EqualTo(9));
+            Assert.That(items[0].SellIn, Is.EqualTo(0));
             Assert.That(items[0].Quality, Is.EqualTo(80));
         }
     }
