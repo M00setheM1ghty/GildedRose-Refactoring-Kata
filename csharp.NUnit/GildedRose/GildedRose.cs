@@ -11,15 +11,19 @@ public class GildedRose
         this.Items = Items;
     }
 
+    private string _agedBrie = "Aged Brie";
+    private string _backstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+    private string _sulfuras = "Sulfuras, Hand of Ragnaros";
+
     public void UpdateQuality()
     {
         for (var i = 0; i < Items.Count; i++)
         {
-            if (!Items[i].Name.Contains("Aged Brie") && !Items[i].Name.Contains("Backstage passes to a TAFKAL80ETC concert"))
+            if (!Items[i].Name.Contains(_agedBrie) && !Items[i].Name.Contains(_backstagePasses))
             {
                 if (Items[i].Quality > 0)
                 {
-                    if (!Items[i].Name.Contains("Sulfuras, Hand of Ragnaros"))
+                    if (!Items[i].Name.Contains(_sulfuras))
                     {
                         Items[i].Quality = Items[i].Quality - 1;
                     }
@@ -31,7 +35,7 @@ public class GildedRose
                 {
                     Items[i].Quality = Items[i].Quality + 1;
 
-                    if (Items[i].Name.Contains("Backstage passes to a TAFKAL80ETC concert"))
+                    if (Items[i].Name.Contains(_backstagePasses))
                     {
                         if (Items[i].SellIn < 11)
                         {
@@ -52,20 +56,20 @@ public class GildedRose
                 }
             }
 
-            if (!Items[i].Name.Contains("Sulfuras, Hand of Ragnaros"))
+            if (!Items[i].Name.Contains(_sulfuras))
             {
                 Items[i].SellIn = Items[i].SellIn - 1;
             }
 
             if (Items[i].SellIn < 0)
             {
-                if (!Items[i].Name.Contains("Aged Brie"))
+                if (!Items[i].Name.Contains(_agedBrie))
                 {
-                    if (!Items[i].Name.Contains("Backstage passes to a TAFKAL80ETC concert"))
+                    if (!Items[i].Name.Contains(_backstagePasses))
                     {
                         if (Items[i].Quality > 0)
                         {
-                            if (!Items[i].Name.Contains("Sulfuras, Hand of Ragnaros"))
+                            if (!Items[i].Name.Contains(_sulfuras))
                             {
                                 Items[i].Quality = Items[i].Quality - 1;
                             }
