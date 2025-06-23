@@ -23,6 +23,9 @@ public class GildedRose
         {
             if (item.Name.Contains(_sulfuras))
                 continue;
+
+            item.SellIn--;
+
             if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
                 if (item.Quality > _qualityLowerLimit)
@@ -37,8 +40,6 @@ public class GildedRose
                 if (item.Name.Contains(_backstagePasses))
                     BackstagePassQualityChange(item);
             }
-
-            item.SellIn--;
 
             if (item.SellIn < 0)
             {
