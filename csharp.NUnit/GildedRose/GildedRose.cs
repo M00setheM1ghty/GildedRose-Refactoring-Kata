@@ -37,18 +37,7 @@ public class GildedRose
                 {
                     item.Quality++;
 
-                    if (item.Name.Contains(_backstagePasses))
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            item.Quality = IncreaseQuality(item.Quality);
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            item.Quality = IncreaseQuality(item.Quality);
-                        }
-                    }
+                    BackstagePassQualityIncrease(item);
                 }
             }
 
@@ -73,7 +62,7 @@ public class GildedRose
                     }
                     else
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.Quality = 0;
                     }
                 }
                 else
@@ -94,5 +83,21 @@ public class GildedRose
         if (UnderQualityLimit(quality))
             quality++;
         return quality;
+    }
+
+    private void BackstagePassQualityIncrease(Item item)
+    {
+        if (item.Name.Contains(_backstagePasses))
+        {
+            if (item.SellIn < 11)
+            {
+                item.Quality = IncreaseQuality(item.Quality);
+            }
+
+            if (item.SellIn < 6)
+            {
+                item.Quality = IncreaseQuality(item.Quality);
+            }
+        }
     }
 }
