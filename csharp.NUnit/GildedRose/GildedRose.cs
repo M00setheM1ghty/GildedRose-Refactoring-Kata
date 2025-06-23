@@ -32,7 +32,7 @@ public class GildedRose
             }
             else
             {
-                if (UnderQualityLimit())
+                if (UnderQualityLimit(Items[i].Quality))
                 {
                     Items[i].Quality++;
 
@@ -40,15 +40,15 @@ public class GildedRose
                     {
                         if (Items[i].SellIn < 11)
                         {
-                            if (UnderQualityLimit())
-                                {
+                            if (UnderQualityLimit(Items[i].Quality))
+                            {
                                 Items[i].Quality++;
                             }
                         }
 
                         if (Items[i].SellIn < 6)
                         {
-                            if (UnderQualityLimit())
+                            if (UnderQualityLimit(Items[i].Quality))
                             {
                                 Items[i].Quality++;
                             }
@@ -92,8 +92,9 @@ public class GildedRose
         }
     }
 
-    private bool UnderQualityLimit()
+    private bool UnderQualityLimit(int quality)
     {
-        return Items [i].Quality < _qualityLimit;
+        return quality < _qualityLimit;
     }
+
 }
