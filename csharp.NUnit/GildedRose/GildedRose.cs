@@ -18,74 +18,74 @@ public class GildedRose
 
     public void UpdateQuality()
     {
-        for (var i = 0; i < Items.Count; i++)
+        foreach(var item in Items)
         {
-            if (!Items[i].Name.Contains(_agedBrie) && !Items[i].Name.Contains(_backstagePasses))
+            if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
-                if (Items[i].Quality > 0)
+                if (item.Quality > 0)
                 {
-                    if (!Items[i].Name.Contains(_sulfuras))
+                    if (!item.Name.Contains(_sulfuras))
                     {
-                        Items[i].Quality--;
+                        item.Quality--;
                     }
                 }
             }
             else
             {
-                if (UnderQualityLimit(Items[i].Quality))
+                if (UnderQualityLimit(item.Quality))
                 {
-                    Items[i].Quality++;
+                    item.Quality++;
 
-                    if (Items[i].Name.Contains(_backstagePasses))
+                    if (item.Name.Contains(_backstagePasses))
                     {
-                        if (Items[i].SellIn < 11)
+                        if (item.SellIn < 11)
                         {
-                            if (UnderQualityLimit(Items[i].Quality))
+                            if (UnderQualityLimit(item.Quality))
                             {
-                                Items[i].Quality++;
+                                item.Quality++;
                             }
                         }
 
-                        if (Items[i].SellIn < 6)
+                        if (item.SellIn < 6)
                         {
-                            if (UnderQualityLimit(Items[i].Quality))
+                            if (UnderQualityLimit(item.Quality))
                             {
-                                Items[i].Quality++;
+                                item.Quality++;
                             }
                         }
                     }
                 }
             }
 
-            if (!Items[i].Name.Contains(_sulfuras))
+            if (!item.Name.Contains(_sulfuras))
             {
-                Items[i].SellIn--;
+                item.SellIn--;
             }
 
-            if (Items[i].SellIn < 0)
+            if (item.SellIn < 0)
             {
-                if (!Items[i].Name.Contains(_agedBrie))
+                if (!item.Name.Contains(_agedBrie))
                 {
-                    if (!Items[i].Name.Contains(_backstagePasses))
+                    if (!item.Name.Contains(_backstagePasses))
                     {
-                        if (Items[i].Quality > 0)
+                        if (item.Quality > 0)
                         {
-                            if (!Items[i].Name.Contains(_sulfuras))
+                            if (!item.Name.Contains(_sulfuras))
                             {
-                                Items[i].Quality--;
+                                item.Quality--;
                             }
                         }
                     }
                     else
                     {
-                        Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        item.Quality = item.Quality - item.Quality;
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality < _qualityLimit)
+                    if (item.Quality < _qualityLimit)
                     {
-                        Items[i].Quality++;
+                        item.Quality++;
                     }
                 }
             }
