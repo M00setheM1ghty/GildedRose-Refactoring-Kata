@@ -14,7 +14,8 @@ public class GildedRose
     private string _agedBrie = "Aged Brie";
     private string _backstagePasses = "Backstage passes to a TAFKAL80ETC concert";
     private string _sulfuras = "Sulfuras, Hand of Ragnaros";
-    private int _qualityLimit = 50;
+    private int _qualityUpperLimit = 50;
+    private int _qualityLowerLimit = 0;
 
     public void UpdateQuality()
     {
@@ -22,7 +23,7 @@ public class GildedRose
         {
             if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
-                if (item.Quality > 0)
+                if (item.Quality > _qualityLowerLimit)
                 {
                     if (!item.Name.Contains(_sulfuras))
                     {
@@ -40,10 +41,7 @@ public class GildedRose
                     {
                         if (item.SellIn < 11)
                         {
-                            if (UnderQualityLimit(item.Quality))
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality = IncreaseQuality(item.Quality);
                         }
 
                         if (item.SellIn < 6)
@@ -88,7 +86,7 @@ public class GildedRose
 
     private bool UnderQualityLimit(int quality)
     {
-        return quality < _qualityLimit;
+        return quality < _qualityUpperLimit;
     }
 
     private int IncreaseQuality(int quality)
