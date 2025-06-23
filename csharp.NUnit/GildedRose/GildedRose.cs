@@ -38,7 +38,11 @@ public class GildedRose
 
             if (item.SellIn < 0)
             {
-                if (!item.Name.Contains(_agedBrie))
+                if (item.Name.Contains(_agedBrie))
+                {
+                    IncreaseQuality(item);
+                }
+                else
                 {
                     if (item.Name.Contains(_backstagePasses))
                     {
@@ -48,10 +52,6 @@ public class GildedRose
                     {
                         DecreaseQuality(item);
                     }
-                }
-                else
-                {
-                    IncreaseQuality(item);
                 }
             }
         }
