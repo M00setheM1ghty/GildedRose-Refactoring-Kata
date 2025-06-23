@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 
 namespace GildedRoseKata;
 
@@ -39,16 +40,13 @@ public class GildedRose
             {
                 if (!item.Name.Contains(_agedBrie))
                 {
-                    if (!item.Name.Contains(_backstagePasses))
+                    if (item.Name.Contains(_backstagePasses))
                     {
-                        if (item.Quality > 0)
-                        {
-                            item.Quality--;
-                        }
+                        item.Quality = 0;
                     }
                     else
                     {
-                        item.Quality = 0;
+                        DecreaseQuality(item);
                     }
                 }
                 else
@@ -90,6 +88,5 @@ public class GildedRose
         {
             IncreaseQuality(item);
         }
-
     }
 }
