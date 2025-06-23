@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 namespace GildedRoseKata;
 
@@ -69,15 +70,17 @@ public class GildedRose
 
     private void UpdateBackstagePass(Item item)
     {
+        int firstDayLimit = 10;
+        int secondDayLimit = 5;
 
         IncreaseQuality(item);
 
-        if (item.SellIn < 11)
+        if (item.SellIn <= firstDayLimit)
         {
             IncreaseQuality(item);
         }
 
-        if (item.SellIn < 6)
+        if (item.SellIn <= secondDayLimit)
         {
             IncreaseQuality(item);
         }
