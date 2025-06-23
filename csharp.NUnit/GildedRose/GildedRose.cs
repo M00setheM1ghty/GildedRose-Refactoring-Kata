@@ -25,7 +25,7 @@ public class GildedRose
                 {
                     if (!Items[i].Name.Contains(_sulfuras))
                     {
-                        Items[i].Quality = Items[i].Quality - 1;
+                        Items[i].Quality--;
                     }
                 }
             }
@@ -33,7 +33,7 @@ public class GildedRose
             {
                 if (Items[i].Quality < 50)
                 {
-                    Items[i].Quality = Items[i].Quality + 1;
+                    Items[i].Quality++;
 
                     if (Items[i].Name.Contains(_backstagePasses))
                     {
@@ -41,7 +41,7 @@ public class GildedRose
                         {
                             if (Items[i].Quality < 50)
                                 {
-                                Items[i].Quality = Items[i].Quality + 1;
+                                Items[i].Quality++;
                             }
                         }
 
@@ -49,7 +49,7 @@ public class GildedRose
                         {
                             if (Items[i].Quality < 50)
                             {
-                                Items[i].Quality = Items[i].Quality + 1;
+                                Items[i].Quality++;
                             }
                         }
                     }
@@ -58,7 +58,7 @@ public class GildedRose
 
             if (!Items[i].Name.Contains(_sulfuras))
             {
-                Items[i].SellIn = Items[i].SellIn - 1;
+                Items[i].SellIn--;
             }
 
             if (Items[i].SellIn < 0)
@@ -71,7 +71,7 @@ public class GildedRose
                         {
                             if (!Items[i].Name.Contains(_sulfuras))
                             {
-                                Items[i].Quality = Items[i].Quality - 1;
+                                Items[i].Quality--;
                             }
                         }
                     }
@@ -84,7 +84,7 @@ public class GildedRose
                 {
                     if (Items[i].Quality < 50)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        Items[i].Quality++;
                     }
                 }
             }
