@@ -27,33 +27,12 @@ public class GildedRose
 
             item.SellIn--;
 
-
             if (item.Name.Contains(_agedBrie))
-                AgedBrieQualityChange(item);
+                UpdateAgedBrie(item);
             else if (item.Name.Contains(_backstagePasses))
-                BackstagePassQualityChange(item);
+                UpdateBackstagePass(item);
             else
-                DecreaseQuality(item);
-
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name.Contains(_agedBrie))
-                {
-                    IncreaseQuality(item);
-                }
-                else
-                {
-                    if (item.Name.Contains(_backstagePasses))
-                    {
-                        item.Quality = 0;
-                    }
-                    else
-                    {
-                        DecreaseQuality(item);
-                    }
-                }
-            }
+                UpdateNormalItem(item);
         }
     }
 
@@ -63,18 +42,32 @@ public class GildedRose
             item.Quality++;
     }
 
-    private void DecreaseQuality(Item item)
+    private void DegradeQuality(Item item)
     {
         if (item.Quality > _qualityLowerLimit)
             item.Quality--;
     }
 
-    private void AgedBrieQualityChange(Item item)
+    private bool Expired(Item item)
     {
-        IncreaseQuality(item);
+        return item.SellIn < 0;
     }
 
-    private void BackstagePassQualityChange(Item item)
+    private void UpdateNormalItem(Item item)
+    {
+        DegradeQuality(item);
+        if (Expired(item))
+            DegradeQuality(item);
+    }
+
+    private void UpdateAgedBrie(Item item)
+    {
+        IncreaseQuality(item);
+        if (Expired(item))
+            IncreaseQuality(item);
+    }
+
+    private void UpdateBackstagePass(Item item)
     {
 
         IncreaseQuality(item);
@@ -87,6 +80,11 @@ public class GildedRose
         if (item.SellIn < 6)
         {
             IncreaseQuality(item);
+        }
+
+        if(Expired(item))
+        {
+            item.Quality = 0;
         }
     }
 }
