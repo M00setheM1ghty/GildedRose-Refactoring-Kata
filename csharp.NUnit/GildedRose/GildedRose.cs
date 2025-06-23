@@ -21,6 +21,7 @@ public class GildedRose
     {
         foreach(var item in Items)
         {
+            
             if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
                 if (item.Quality > _qualityLowerLimit)
@@ -33,12 +34,10 @@ public class GildedRose
             }
             else
             {
-                if (UnderQualityLimit(item.Quality))
-                {
-                    item.Quality++;
-
-                    BackstagePassQualityIncrease(item);
-                }
+                if (item.Name.Contains(_agedBrie))
+                    AgedBrieQualityChange(item);
+                if (item.Name.Contains(_backstagePasses))
+                    BackstagePassQualityChange(item);
             }
 
             if (!item.Name.Contains(_sulfuras))
@@ -67,7 +66,7 @@ public class GildedRose
                 }
                 else
                 {
-                    item.Quality = IncreaseQuality(item.Quality);
+                    IncreaseQuality(item);
                 }
             }
         }
@@ -78,26 +77,31 @@ public class GildedRose
         return quality < _qualityUpperLimit;
     }
 
-    private int IncreaseQuality(int quality)
+    private void IncreaseQuality(Item item)
     {
-        if (UnderQualityLimit(quality))
-            quality++;
-        return quality;
+        if (UnderQualityLimit(item.Quality))
+            item.Quality++;
     }
 
-    private void BackstagePassQualityIncrease(Item item)
+    private void AgedBrieQualityChange(Item item)
     {
-        if (item.Name.Contains(_backstagePasses))
-        {
-            if (item.SellIn < 11)
-            {
-                item.Quality = IncreaseQuality(item.Quality);
-            }
+        IncreaseQuality(item);
+    }
 
-            if (item.SellIn < 6)
-            {
-                item.Quality = IncreaseQuality(item.Quality);
-            }
+    private void BackstagePassQualityChange(Item item)
+    {
+
+        IncreaseQuality(item);
+
+        if (item.SellIn < 11)
+        {
+            IncreaseQuality(item);
         }
+
+        if (item.SellIn < 6)
+        {
+            IncreaseQuality(item);
+        }
+
     }
 }
