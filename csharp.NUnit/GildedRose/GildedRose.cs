@@ -28,10 +28,7 @@ public class GildedRose
 
             if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
-                if (item.Quality > _qualityLowerLimit)
-                {
-                    item.Quality--;
-                }
+                DecreaseQuality(item);
             }
             else
             {
@@ -65,15 +62,16 @@ public class GildedRose
         }
     }
 
-    private bool UnderQualityLimit(int quality)
-    {
-        return quality < _qualityUpperLimit;
-    }
-
     private void IncreaseQuality(Item item)
     {
-        if (UnderQualityLimit(item.Quality))
+        if (item.Quality < _qualityUpperLimit)
             item.Quality++;
+    }
+
+    private void DecreaseQuality(Item item)
+    {
+        if (item.Quality > _qualityLowerLimit)
+            item.Quality--;
     }
 
     private void AgedBrieQualityChange(Item item)
