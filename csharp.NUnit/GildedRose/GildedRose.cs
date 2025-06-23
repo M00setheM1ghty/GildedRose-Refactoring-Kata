@@ -48,10 +48,7 @@ public class GildedRose
 
                         if (item.SellIn < 6)
                         {
-                            if (UnderQualityLimit(item.Quality))
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality = IncreaseQuality(item.Quality);
                         }
                     }
                 }
@@ -83,10 +80,7 @@ public class GildedRose
                 }
                 else
                 {
-                    if (item.Quality < _qualityLimit)
-                    {
-                        item.Quality++;
-                    }
+                    item.Quality = IncreaseQuality(item.Quality);
                 }
             }
         }
@@ -97,4 +91,10 @@ public class GildedRose
         return quality < _qualityLimit;
     }
 
+    private int IncreaseQuality(int quality)
+    {
+        if (UnderQualityLimit(quality))
+            quality++;
+        return quality;
+    }
 }
