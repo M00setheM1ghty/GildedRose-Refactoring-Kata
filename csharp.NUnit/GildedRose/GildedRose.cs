@@ -21,15 +21,13 @@ public class GildedRose
     {
         foreach(var item in Items)
         {
-            
+            if (item.Name.Contains(_sulfuras))
+                continue;
             if (!item.Name.Contains(_agedBrie) && !item.Name.Contains(_backstagePasses))
             {
                 if (item.Quality > _qualityLowerLimit)
                 {
-                    if (!item.Name.Contains(_sulfuras))
-                    {
-                        item.Quality--;
-                    }
+                    item.Quality--;
                 }
             }
             else
@@ -40,10 +38,7 @@ public class GildedRose
                     BackstagePassQualityChange(item);
             }
 
-            if (!item.Name.Contains(_sulfuras))
-            {
-                item.SellIn--;
-            }
+            item.SellIn--;
 
             if (item.SellIn < 0)
             {
@@ -53,10 +48,7 @@ public class GildedRose
                     {
                         if (item.Quality > 0)
                         {
-                            if (!item.Name.Contains(_sulfuras))
-                            {
-                                item.Quality--;
-                            }
+                            item.Quality--;
                         }
                     }
                     else
