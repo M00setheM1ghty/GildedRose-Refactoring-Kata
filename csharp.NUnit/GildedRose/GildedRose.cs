@@ -14,6 +14,7 @@ public class GildedRose
     private string _agedBrie = "Aged Brie";
     private string _backstagePasses = "Backstage passes to a TAFKAL80ETC concert";
     private string _sulfuras = "Sulfuras, Hand of Ragnaros";
+    private int _qualityLimit = 50;
 
     public void UpdateQuality()
     {
@@ -31,7 +32,7 @@ public class GildedRose
             }
             else
             {
-                if (Items[i].Quality < 50)
+                if (Items[i].Quality < _qualityLimit)
                 {
                     Items[i].Quality++;
 
@@ -82,7 +83,7 @@ public class GildedRose
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
+                    if (Items[i].Quality < _qualityLimit)
                     {
                         Items[i].Quality++;
                     }
